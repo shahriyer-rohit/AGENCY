@@ -29,7 +29,7 @@ export default function DestinationCard({
             {destination.name}
           </h3>
           <p className="text-sm text-slate-600 leading-relaxed">
-            {destination.intro}
+            {destination.text}
           </p>
         </div>
       </div>
