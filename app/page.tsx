@@ -57,29 +57,29 @@ export default function Home() {
     <>
       <Hero />
 
-      <main className="space-y-16 sm:space-y-24 py-16 sm:py-24">
-        {/* Intro Section */}
+      <main className="space-y-16 sm:space-y-24 pt-8 sm:pt-12 pb-16 sm:pb-24">
+        {/* Destinations Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-8 items-center bg-white rounded-2xl p-8 sm:p-12 border border-slate-200/80 shadow-sm">
-            <div className="lg:col-span-7">
+          <div className="space-y-10">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <SectionTitle
-                eyebrow="A little about us"
-                title="Big dreams deserve the right direction."
-                description="We believe studying abroad should feel exciting, not overwhelming. Our team combines global expertise with a genuinely personal approach—so every decision feels like yours."
+                eyebrow="Where could you go?"
+                title="The world is waiting."
               />
+
+              <Link
+                href="/destinations"
+                className="inline-flex items-center gap-2 text-sm font-bold text-navy-900 hover:text-brand-blue shrink-0"
+              >
+                <span>View all destinations</span>
+                <ArrowRight className="w-4 h-4 text-amber-600" />
+              </Link>
             </div>
 
-            <div className="lg:col-span-5 bg-slate-50 p-6 sm:p-8 rounded-xl border border-slate-200/60 space-y-4">
-              <p className="text-navy-900 font-semibold text-lg leading-relaxed">
-                Thoughtful guidance from your first question to your first day on campus.
-              </p>
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 text-sm font-bold text-navy-900 hover:text-brand-blue"
-              >
-                <span>Get to know us</span>
-                <ArrowUpRight className="w-4 h-4 text-amber-600" />
-              </Link>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {destinations.map((d) => (
+                <DestinationCard key={d.name} destination={d} />
+              ))}
             </div>
           </div>
         </section>
@@ -101,34 +101,39 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Destinations Section */}
+        {/* Intro / About Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-10">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div className="grid lg:grid-cols-12 gap-8 items-center bg-white rounded-2xl p-8 sm:p-12 border border-slate-200/80 shadow-sm">
+            
+            <div className="lg:col-span-7">
               <SectionTitle
-                eyebrow="Where could you go?"
-                title="The world is waiting."
+                eyebrow="A little about us"
+                title="Big dreams deserve the right direction."
+                description="We believe studying abroad should feel exciting, not overwhelming. Our team combines global expertise with a genuinely personal approach—so every decision feels like yours."
               />
+            </div>
+
+            <div className="lg:col-span-5 bg-slate-50 p-6 sm:p-8 rounded-xl border border-slate-200/60 space-y-4">
+              <p className="text-navy-900 font-semibold text-lg leading-relaxed">
+                Thoughtful guidance from your first question to your first day on campus.
+              </p>
+
               <Link
-                href="/destinations"
-                className="inline-flex items-center gap-2 text-sm font-bold text-navy-900 hover:text-brand-blue shrink-0"
+                href="/about"
+                className="inline-flex items-center gap-2 text-sm font-bold text-navy-900 hover:text-brand-blue"
               >
-                <span>View all destinations</span>
-                <ArrowRight className="w-4 h-4 text-amber-600" />
+                <span>Get to know us</span>
+                <ArrowUpRight className="w-4 h-4 text-amber-600" />
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {destinations.map((d) => (
-                <DestinationCard key={d.name} destination={d} />
-              ))}
-            </div>
           </div>
         </section>
 
         {/* Why Choose Us Section */}
         <section className="bg-navy-950 text-white py-16 sm:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
             <div className="max-w-2xl">
               <SectionTitle
                 eyebrow="Why GlobalEdu"
@@ -141,18 +146,22 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {trustItems.map((item) => {
                 const IconComp = item.icon;
+
                 return (
                   <div
                     key={item.title}
                     className="bg-white/5 border border-white/10 rounded-xl p-6 space-y-4 hover:bg-white/10 transition-colors"
                   >
                     <div className="flex items-center justify-between">
+
                       <div className="w-10 h-10 rounded-lg bg-amber-500/20 text-gold-400 flex items-center justify-center">
                         <IconComp className="w-5 h-5" />
                       </div>
+
                       <span className="text-xs font-bold text-amber-400/80">
                         {item.num}
                       </span>
+
                     </div>
 
                     <h3 className="text-lg font-bold text-white">
@@ -166,17 +175,20 @@ export default function Home() {
                 );
               })}
             </div>
+
           </div>
         </section>
 
         {/* Blog Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-10">
+
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <SectionTitle
                 eyebrow="From the journal"
                 title="Useful things to know."
               />
+
               <Link
                 href="/blog"
                 className="inline-flex items-center gap-2 text-sm font-bold text-navy-900 hover:text-brand-blue shrink-0"
@@ -191,11 +203,13 @@ export default function Home() {
                 <BlogCard key={p.slug} post={p} />
               ))}
             </div>
+
           </div>
         </section>
 
         {/* FAQ Section */}
         <FAQ />
+
       </main>
 
       <CTASection />
